@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Characters from './Characters';
 
 const initialFilm = {
   title: '',
@@ -48,15 +49,6 @@ const FilmDetails = props => {
         characters
       } = filmDetails;
 
-      // const charactersPromises = characters.map(c => axios.get(c));
-      // const charactersArr = await Promise.all(charactersPromises)
-      //   .then(({ data }) => {
-      //     return data;
-      //   })
-      //   .catch(err => {
-      //     console.log('error resolving characters');
-      //   });
-
       setFilm(prevState => ({
         ...prevState,
         loading: false,
@@ -74,21 +66,34 @@ const FilmDetails = props => {
     getFilmDetails();
   }, [filmTitle]);
 
-  const { title, episode_id, opening_crawl, director, producer } = film.data;
+  const {
+    title,
+    episode_id,
+    opening_crawl,
+    director,
+    producer,
+    characters
+  } = film.data;
   return (
     <div>
       <h1>Film Details Page</h1>
-      {film.loading ? (
-        'Loading...'
-      ) : (
-        <div>
-          <p>Title: {title}</p>
-          <p>Episode: {episode_id}</p>
-          <p>Opening Crawl: {opening_crawl}</p>
-          <p>Director: {director}</p>
-          <p>Producer: {producer}</p>
-        </div>
-      )}
+      <h4>Film Metadata</h4>
+      {/* metadata */}
+      {film.loading
+        ? 'Loading...'
+        : <div>
+            <p>Title: {title}</p>
+            <p>Episode: {episode_id}</p>
+            <p>Opening Crawl: {opening_crawl}</p>
+            <p>Director: {director}</p>
+            <p>Producer: {producer}</p>
+          </div>
+      }
+
+      {film.error && <div>{film.error}</div>}
+
+      {/* characters */}
+      <Characters characters={characters} />
     </div>
   );
 };
