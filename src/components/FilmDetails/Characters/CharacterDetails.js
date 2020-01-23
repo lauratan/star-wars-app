@@ -1,4 +1,5 @@
 import React from 'react';
+import Homeworld from './Homeworld';
 
 const CharacterDetails = props => {
   const { char: character } = props.location.state;
@@ -10,7 +11,8 @@ const CharacterDetails = props => {
     skin_color,
     eye_color,
     birth_year,
-    gender
+    gender,
+    homeworld
   } = character;
 
   return (
@@ -24,6 +26,8 @@ const CharacterDetails = props => {
       <p>Eye Color: {eye_color}</p>
       <p>Birth Year: {birth_year}</p>
       <p>Gender: {gender}</p>
+
+      <Homeworld homeworld={homeworld} />
     </div>
   );
 };
