@@ -44,7 +44,7 @@ const Films = () => {
   return (
     <div>
       <h1>Film List Page</h1>
-      {films.loading ? 'Loading...' : <ul>{filmData}</ul>}
+      {films.loading ? <p>Loading...</p> : <ul>{filmData}</ul>}
       {films.error && <div>{films.error}</div>}
     </div>
   );
