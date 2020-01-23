@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Characters from './Characters';
+import Planets from './Planets';
 
 const initialFilm = {
   title: '',
@@ -46,7 +47,8 @@ const FilmDetails = props => {
         opening_crawl,
         director,
         producer,
-        characters
+        characters,
+        planets
       } = filmDetails;
 
       setFilm(prevState => ({
@@ -58,7 +60,8 @@ const FilmDetails = props => {
           opening_crawl,
           director,
           producer,
-          characters
+          characters,
+          planets
         }
       }));
     };
@@ -72,7 +75,8 @@ const FilmDetails = props => {
     opening_crawl,
     director,
     producer,
-    characters
+    characters,
+    planets
   } = film.data;
   return (
     <div>
@@ -94,6 +98,9 @@ const FilmDetails = props => {
 
       {/* characters */}
       <Characters characters={characters} />
+
+      {/* planets */}
+      <Planets planets={planets} />
     </div>
   );
 };

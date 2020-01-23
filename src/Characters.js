@@ -36,7 +36,6 @@ const Characters = ({ characters: charactersUrls }) => {
     <li key={name}>{name}</li>
   ));
 
-  console.log(characters.loading);
   return (
     <div>
       <h4>Characters</h4>
