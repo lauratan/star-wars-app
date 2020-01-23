@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Characters from './Characters';
 import Planets from './Planets';
+import Starships from './Starships';
+import Vehicles from './Vehicles';
+import Species from './Species';
 
 const initialFilm = {
   title: '',
@@ -48,7 +51,10 @@ const FilmDetails = props => {
         director,
         producer,
         characters,
-        planets
+        planets,
+        starships,
+        vehicles,
+        species
       } = filmDetails;
 
       setFilm(prevState => ({
@@ -61,7 +67,10 @@ const FilmDetails = props => {
           director,
           producer,
           characters,
-          planets
+          planets,
+          starships,
+          vehicles,
+          species
         }
       }));
     };
@@ -76,23 +85,27 @@ const FilmDetails = props => {
     director,
     producer,
     characters,
-    planets
+    planets,
+    starships,
+    vehicles,
+    species
   } = film.data;
   return (
     <div>
       <h1>Film Details Page</h1>
       <h4>Film Metadata</h4>
       {/* metadata */}
-      {film.loading
-        ? 'Loading...'
-        : <div>
-            <p>Title: {title}</p>
-            <p>Episode: {episode_id}</p>
-            <p>Opening Crawl: {opening_crawl}</p>
-            <p>Director: {director}</p>
-            <p>Producer: {producer}</p>
-          </div>
-      }
+      {film.loading ? (
+        'Loading...'
+      ) : (
+        <div>
+          <p>Title: {title}</p>
+          <p>Episode: {episode_id}</p>
+          <p>Opening Crawl: {opening_crawl}</p>
+          <p>Director: {director}</p>
+          <p>Producer: {producer}</p>
+        </div>
+      )}
 
       {film.error && <div>{film.error}</div>}
 
@@ -101,6 +114,15 @@ const FilmDetails = props => {
 
       {/* planets */}
       <Planets planets={planets} />
+
+      {/* starships */}
+      <Starships starships={starships} />
+
+      {/* vehicles */}
+      <Vehicles vehicles={vehicles} />
+
+      {/* species */}
+      <Species species={species} />
     </div>
   );
 };
