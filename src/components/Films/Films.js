@@ -8,6 +8,7 @@ const Films = () => {
     data: [],
     error: ''
   });
+  const [search, setSearch] = useState('');
 
   const getFilms = async () => {
     const filmsResult = await axios
@@ -34,16 +35,28 @@ const Films = () => {
     getFilms();
   }, []);
 
-  const filmData = films.data.map(film => {
+  const handleSearch = e => {
+    setSearch(e.target.value);
+  };
+
+  let filteredFilms = films.data.filter(film => {
+    return film.title.toLowerCase().includes(search.toLowerCase());
+  });
+
+  const filmData = filteredFilms.map(film => {
     return (
       <li key={film.episode_id}>
         <Link to={`/film/${film.title}`}>{film.title}</Link>
       </li>
     );
   });
+
   return (
     <div>
       <h1>Film List Page</h1>
+      <span>
+        Search: <input value={search} onChange={e => handleSearch(e)} />
+      </span>
       {films.loading ? <p>Loading...</p> : <ul>{filmData}</ul>}
       {films.error && <div>{films.error}</div>}
     </div>
