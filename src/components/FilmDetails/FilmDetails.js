@@ -43,33 +43,10 @@ const FilmDetails = props => {
             loading: false
           }));
         });
-      const {
-        title,
-        episode_id,
-        opening_crawl,
-        director,
-        producer,
-        characters,
-        planets,
-        starships,
-        vehicles,
-        species
-      } = filmDetails;
       setFilm(prevState => ({
         ...prevState,
         loading: false,
-        data: {
-          title,
-          episode_id,
-          opening_crawl,
-          director,
-          producer,
-          characters,
-          planets,
-          starships,
-          vehicles,
-          species
-        }
+        data: filmDetails
       }));
     };
 
