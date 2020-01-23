@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Characters = ({ characters: charactersUrls }) => {
@@ -9,12 +10,12 @@ const Characters = ({ characters: charactersUrls }) => {
   });
 
   useEffect(() => {
-    const names = [];
+    const charactersArr = [];
     const getCharacters = async () => {
       const charactersPromises = charactersUrls.map(c => axios.get(c));
       await Promise.all(charactersPromises)
         .then(res => {
-          res.map(({ data: { name } }) => names.push(name));
+          res.map(({ data }) => charactersArr.push(data));
         })
         .catch(err => {
           setCharacters(prevState => ({
@@ -25,16 +26,23 @@ const Characters = ({ characters: charactersUrls }) => {
         });
       setCharacters(prevState => ({
         ...prevState,
-        data: names,
+        data: charactersArr,
         loading: false
       }));
     };
     charactersUrls.length && getCharacters();
   }, [charactersUrls]);
 
-  const charactersData = characters.data.map(name => (
-    <li key={name}>{name}</li>
-  ));
+  const charactersData = characters.data.map(char => {
+    const { name } = char;
+    return (
+      <li key={name}>
+        <Link to={{ pathname: `/character/${name}`, state: { char } }}>
+          {name}
+        </Link>
+      </li>
+    );
+  });
 
   return (
     <div>

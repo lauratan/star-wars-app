@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Characters from './Characters';
+import React, { useEffect, useState } from 'react';
+import Characters from './Characters/Characters';
 import Planets from './Planets';
 import Starships from './Starships';
-import Vehicles from './Vehicles';
 import Species from './Species';
+import Vehicles from './Vehicles';
 
-const initialFilm = {
+const initialState = {
   title: '',
   episode_id: '',
   opening_crawl: '',
@@ -23,7 +23,7 @@ const initialFilm = {
 const FilmDetails = props => {
   const [film, setFilm] = useState({
     loading: true,
-    data: initialFilm,
+    data: initialState,
     error: ''
   });
 
@@ -43,7 +43,6 @@ const FilmDetails = props => {
             loading: false
           }));
         });
-
       const {
         title,
         episode_id,
@@ -56,7 +55,6 @@ const FilmDetails = props => {
         vehicles,
         species
       } = filmDetails;
-
       setFilm(prevState => ({
         ...prevState,
         loading: false,
@@ -90,38 +88,32 @@ const FilmDetails = props => {
     vehicles,
     species
   } = film.data;
+
   return (
     <div>
       <h1>Film Details Page</h1>
       <h4>Film Metadata</h4>
-      {/* metadata */}
-      {film.loading ? (
-        'Loading...'
-      ) : (
-        <div>
-          <p>Title: {title}</p>
-          <p>Episode: {episode_id}</p>
-          <p>Opening Crawl: {opening_crawl}</p>
-          <p>Director: {director}</p>
-          <p>Producer: {producer}</p>
-        </div>
-      )}
+      {film.loading
+        ?'Loading...'
+        : <div>
+            <p>Title: {title}</p>
+            <p>Episode: {episode_id}</p>
+            <p>Opening Crawl: {opening_crawl}</p>
+            <p>Director: {director}</p>
+            <p>Producer: {producer}</p>
+          </div>
+      }
 
       {film.error && <div>{film.error}</div>}
 
-      {/* characters */}
       <Characters characters={characters} />
 
-      {/* planets */}
       <Planets planets={planets} />
 
-      {/* starships */}
       <Starships starships={starships} />
 
-      {/* vehicles */}
       <Vehicles vehicles={vehicles} />
 
-      {/* species */}
       <Species species={species} />
     </div>
   );
