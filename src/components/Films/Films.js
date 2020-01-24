@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useFilms from '../hooks/useFilms';
+import DisplayError from '../../commons/DisplayError';
 
 const Films = () => {
   const [films] = useFilms();
@@ -29,7 +30,7 @@ const Films = () => {
         Search: <input value={search} onChange={e => handleSearch(e)} />
       </span>
       {films.loading ? <p>Loading...</p> : <ul>{filmData}</ul>}
-      {films.error && <div>{films.error}</div>}
+      <DisplayError error={films.error} />
     </div>
   );
 };
