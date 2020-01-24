@@ -28,7 +28,7 @@ const Homeworld = ({ homeworld: url }) => {
   }, [url]);
   return (
     <div>
-      <p>Homeworld: {homeworld.name}</p>
+      <p>Homeworld: {homeworld.loading ? 'Loading homeworld... ' : homeworld.name}</p>
     </div>
   );
 };
