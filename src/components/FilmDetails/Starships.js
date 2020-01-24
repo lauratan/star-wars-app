@@ -1,11 +1,11 @@
 import React from 'react';
-import DisplayResource from '../../commons/DisplayResource';
-import useResolvePromises from '../../hooks/useResolvePromises';
+import DisplayNames from '../../commons/DisplayNames';
+import useResolveNames from '../../hooks/useResolveNames';
 
 const Starships = ({ starships: starshipsUrls }) => {
-  const [starships] = useResolvePromises(starshipsUrls, 'starships');
+  const [starships] = useResolveNames(starshipsUrls, 'starships');
 
-  return <DisplayResource resources={starships} resourceType='Starships' />;
+  return <DisplayNames resources={starships} resourceType='Starships' />;
 };
 
 export default Starships;

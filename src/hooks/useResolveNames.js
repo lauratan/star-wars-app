@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-const useResolvePromises = (urls, resource) => {
+const useResolveNames = (urls, resource) => {
   const [resources, setResources] = useState({
     loading: true,
     data: [],
@@ -9,12 +9,12 @@ const useResolvePromises = (urls, resource) => {
   });
 
   useEffect(() => {
-    const details = [];
+    const names = [];
     const getResources = async () => {
       const promises = urls.map(url => axios.get(url));
       await Promise.all(promises)
         .then(res => {
-          res.map(({ data }) => details.push(data));
+          res.map(({ data: { name } }) => names.push(name));
         })
         .catch(error => {
           setResources(prevState => ({
@@ -25,7 +25,7 @@ const useResolvePromises = (urls, resource) => {
         });
       setResources(prevState => ({
         ...prevState,
-        data: details,
+        data: names,
         loading: false
       }));
     };
@@ -35,4 +35,4 @@ const useResolvePromises = (urls, resource) => {
   return [resources];
 };
 
-export default useResolvePromises;
+export default useResolveNames;

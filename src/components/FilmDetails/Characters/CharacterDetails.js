@@ -1,5 +1,9 @@
 import React from 'react';
 import Homeworld from './Homeworld';
+import Films from './Films';
+import Starships from './Starships';
+import Vehicles from './Vehicles';
+import Species from './Species';
 
 const CharacterDetails = props => {
   const { char: character } = props.location.state;
@@ -12,7 +16,11 @@ const CharacterDetails = props => {
     eye_color,
     birth_year,
     gender,
-    homeworld
+    homeworld,
+    films,
+    species,
+    vehicles,
+    starships
   } = character;
 
   return (
@@ -28,6 +36,14 @@ const CharacterDetails = props => {
       <p>Gender: {gender}</p>
 
       <Homeworld homeworld={homeworld} />
+
+      <Films films={films} />
+
+      <Species species={species} />
+
+      <Vehicles vehicles={vehicles} />
+
+      <Starships starships={starships} />
     </div>
   );
 };

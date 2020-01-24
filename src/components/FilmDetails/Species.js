@@ -1,11 +1,11 @@
 import React from 'react';
-import DisplayResource from '../../commons/DisplayResource';
-import useResolvePromises from '../../hooks/useResolvePromises';
+import DisplayNames from '../../commons/DisplayNames';
+import useResolveNames from '../../hooks/useResolveNames';
 
 const Species = ({ species: speciesUrls }) => {
-  const [species] = useResolvePromises(speciesUrls, 'species');
+  const [species] = useResolveNames(speciesUrls, 'species');
 
-  return <DisplayResource resources={species} resourceType='Species' />;
+  return <DisplayNames resources={species} resourceType='Species' />;
 };
 
 export default Species;

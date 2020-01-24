@@ -1,7 +1,9 @@
 import React from 'react';
 
-const DisplayResource = ({ resources, resourceType }) => {
-  const resourceList = resources.data.map(name => <li key={name}>{name}</li>);
+const DisplayNames = ({ resources, resourceType }) => {
+  const resourceList = resources.data.map((name, id) => {
+  return <li key={`${name}${id}`}>{name}</li>
+});
   return (
     <div>
       <h4>{resourceType}</h4>
@@ -15,4 +17,4 @@ const DisplayResource = ({ resources, resourceType }) => {
   );
 };
 
-export default DisplayResource;
+export default DisplayNames;

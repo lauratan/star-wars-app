@@ -1,34 +1,15 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import useResolvePromise from '../../../hooks/useResolvePromise';
 
 const Homeworld = ({ homeworld: url }) => {
-  const [homeworld, setHomeworld] = useState({
-    loading: true,
-    name: '',
-    error: ''
-  });
+  const [homeworld] = useResolvePromise(url);
 
-  useEffect(() => {
-    axios
-      .get(url)
-      .then(({ data: { name } }) => {
-        setHomeworld(prevState => ({
-          ...prevState,
-          loading: false,
-          name
-        }));
-      })
-      .catch(err => {
-        setHomeworld(prevState => ({
-          ...prevState,
-          loading: false,
-          error: "Error retrieving character's homeworld"
-        }));
-      });
-  }, [url]);
   return (
     <div>
-      <p>Homeworld: {homeworld.loading ? 'Loading homeworld... ' : homeworld.name}</p>
+      <p>
+        Homeworld:
+        {homeworld.loading ? ' Loading homeworld... ' : ` ${homeworld.data.name}`}
+      </p>
     </div>
   );
 };
