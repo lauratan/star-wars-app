@@ -1,6 +1,6 @@
 import React from 'react';
-import DisplayResource from '../commons/DisplayResource';
-import useAPI from '../hooks/useAPI';
+import DisplayResource from '../../commons/DisplayResource';
+import useAPI from '../../hooks/useAPI';
 
 const Vehicles = ({ vehicles: vehiclesUrl }) => {
   const [vehicles] = useAPI(vehiclesUrl, 'vehicles');
