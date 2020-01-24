@@ -12,22 +12,21 @@ const useResolvePromises = (urls, resource) => {
     const details = [];
     const getResources = async () => {
       const promises = urls.map(url => axios.get(url));
-      await Promise.all(promises)
-        .then(res => {
-          res.map(({ data }) => details.push(data));
-        })
-        .catch(error => {
-          setResources(prevState => ({
-            ...prevState,
-            loading: false,
-            error: `Error retrieving ${resource}`
-          }));
-        });
-      setResources(prevState => ({
-        ...prevState,
-        data: details,
-        loading: false
-      }));
+      try {
+        const resolvedPromises = await Promise.all(promises);
+        resolvedPromises.map(({ data }) => details.push(data));
+        setResources(prevState => ({
+          ...prevState,
+          data: details,
+          loading: false
+        }));
+      } catch (error) {
+        setResources(prevState => ({
+          ...prevState,
+          loading: false,
+          error: `Error retrieving ${resource}`
+        }));
+      }
     };
     urls.length && getResources();
   }, [urls, resource]);

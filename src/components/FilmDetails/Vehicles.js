@@ -1,9 +1,9 @@
 import React from 'react';
 import DisplayNames from '../../commons/DisplayNames';
-import useResolveNames from '../../hooks/useResolveNames';
+import useResolvePromises from '../../hooks/useResolvePromises';
 
 const Vehicles = ({ vehicles: vehiclesUrl }) => {
-  const [vehicles] = useResolveNames(vehiclesUrl, 'vehicles');
+  const [vehicles] = useResolvePromises(vehiclesUrl, 'vehicles');
 
   return <DisplayNames resources={vehicles} resourceType='Vehicles' />;
 };
