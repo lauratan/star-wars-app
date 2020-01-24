@@ -1,39 +1,10 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useFilms from '../hooks/useFilms';
 
 const Films = () => {
-  const [films, setFilms] = useState({
-    loading: true,
-    data: [],
-    error: ''
-  });
+  const [films] = useFilms();
   const [search, setSearch] = useState('');
-
-  const getFilms = async () => {
-    const filmsResult = await axios
-      .get('https://swapi.co/api/films')
-      .then(({ data: { results } }) => {
-        return results;
-      })
-      .catch(err => {
-        setFilms(prevState => ({
-          ...prevState,
-          loading: false,
-          error: 'Error getting films from SWAPI'
-        }));
-      });
-
-    setFilms(prevState => ({
-      ...prevState,
-      loading: false,
-      data: filmsResult
-    }));
-  };
-
-  useEffect(() => {
-    getFilms();
-  }, []);
 
   const handleSearch = e => {
     setSearch(e.target.value);
