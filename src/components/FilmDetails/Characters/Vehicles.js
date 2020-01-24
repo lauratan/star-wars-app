@@ -1,18 +1,11 @@
 import React from 'react';
+import DisplayNames from '../../../commons/DisplayNames';
 import useResolvePromises from '../../../hooks/useResolvePromises';
 
 const Vehicles = ({ vehicles: urls }) => {
   const [vehicles] = useResolvePromises(urls, 'vehicles');
-  const vehiclesData = vehicles.data.map(vehicles => (
-    <li key={vehicles.name}>{vehicles.name}</li>
-  ));
 
-  return (
-    <div>
-      Vehicles:
-      <ul>{vehiclesData}</ul>
-    </div>
-  );
+  return <DisplayNames resources={vehicles} resourceType='Vehicles' />;
 };
 
 export default Vehicles;

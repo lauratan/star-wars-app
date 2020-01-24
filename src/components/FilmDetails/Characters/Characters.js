@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useResolvePromises from '../../../hooks/useResolvePromises';
+import DisplayError from '../../../commons/DisplayError';
 
 const Characters = ({ characters: charactersUrls }) => {
   const [characters] = useResolvePromises(charactersUrls);
@@ -20,7 +21,7 @@ const Characters = ({ characters: charactersUrls }) => {
     <div>
       <h4>Characters</h4>
       {characters.loading ? 'Loading Characters...' : <ul>{charactersData}</ul>}
-      {characters.error && <div>{characters.error}</div>}
+      <DisplayError error={characters.error} />
     </div>
   );
 };

@@ -7,6 +7,7 @@ import Species from './Species';
 
 const CharacterDetails = props => {
   const { char: character } = props.location.state;
+  console.log(character);
   const {
     name,
     height,

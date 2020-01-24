@@ -10,5 +10,4 @@
 * Implementing a helper function or HOC for handling the API calls that are separated into different components in FilmDetails page
 
 TODO:
-- loading state in character details components
-- refactor character details components - create generic display component
+- handle empty arr
