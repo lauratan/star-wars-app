@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import DisplayResource from '../commons/DisplayResource';
 
 const Vehicles = ({ vehicles: vehiclesUrl }) => {
   const [vehicles, setVehicles] = useState({
@@ -32,15 +33,7 @@ const Vehicles = ({ vehicles: vehiclesUrl }) => {
     vehiclesUrl.length && getVehicles();
   }, [vehiclesUrl]);
 
-  const vehiclesData = vehicles.data.map(name => <li key={name}>{name}</li>);
-
-  return (
-    <div>
-      <h4>Vehicles</h4>
-      {vehicles.loading ? 'Loading Vehicles...' : <ul>{vehiclesData}</ul>}
-      {vehicles.error && <div>{vehicles.error}</div>}
-    </div>
-  );
+  return <DisplayResource resources={vehicles} resourceType='Vehicles' />;
 };
 
 export default Vehicles;

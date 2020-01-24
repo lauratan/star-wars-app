@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import DisplayResource from '../commons/DisplayResource';
 
 const Planets = ({ planets: planetsUrls }) => {
   const [planets, setPlanets] = useState({
@@ -32,18 +33,7 @@ const Planets = ({ planets: planetsUrls }) => {
     planetsUrls.length && getPlanets();
   }, [planetsUrls]);
 
-  const planetsData = planets.data.map(name => (
-    <li key={name}>{name}</li>
-  ));
-
-
-  return (
-    <div>
-      <h4>Planets</h4>
-      {planets.loading ? 'Loading Planets...' : <ul>{planetsData}</ul>}
-      {planets.error && <div>{planets.error}</div>}
-    </div>
-  );
+  return <DisplayResource resources={planets} resourceType='Planets' />;
 };
 
 export default Planets;

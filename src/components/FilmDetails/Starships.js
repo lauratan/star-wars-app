@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import DisplayResource from '../commons/DisplayResource';
 
 const Starships = ({ starships: starshipsUrls }) => {
   const [starships, setStarships] = useState({
@@ -32,15 +33,7 @@ const Starships = ({ starships: starshipsUrls }) => {
     starshipsUrls.length && getStarships();
   }, [starshipsUrls]);
 
-  const starshipsData = starships.data.map(name => <li key={name}>{name}</li>);
-
-  return (
-    <div>
-      <h4>Starships</h4>
-      {starships.loading ? 'Loading Starships...' : <ul>{starshipsData}</ul>}
-      {starships.error && <div>{starships.error}</div>}
-    </div>
-  );
+  return <DisplayResource resources={starships} resourceType='Starships' />;
 };
 
 export default Starships;

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import DisplayResource from '../commons/DisplayResource';
 
 const Species = ({ species: speciesUrls }) => {
   const [species, setSpecies] = useState({
@@ -32,15 +33,7 @@ const Species = ({ species: speciesUrls }) => {
     speciesUrls.length && getSpecies();
   }, [speciesUrls]);
 
-  const speciesData = species.data.map(name => <li key={name}>{name}</li>);
-
-  return (
-    <div>
-      <h4>Species</h4>
-      {species.loading ? 'Loading Species...' : <ul>{speciesData}</ul>}
-      {species.error && <div>{species.error}</div>}
-    </div>
-  );
+  return <DisplayResource resources={species} resourceType='Species' />;
 };
 
 export default Species;
