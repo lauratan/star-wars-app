@@ -4,7 +4,7 @@ import Planets from './Planets';
 import Starships from './Starships';
 import Species from './Species';
 import Vehicles from './Vehicles';
-import useFilmDetails from '../hooks/useFilmDetails';
+import useFilmDetails from '../../hooks/useFilmDetails';
 import DisplayError from '../../commons/DisplayError'
 
 const FilmDetails = props => {

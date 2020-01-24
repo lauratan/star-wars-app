@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import useFilms from '../hooks/useFilms';
+import useFilms from '../../hooks/useFilms';
 import DisplayError from '../../commons/DisplayError';
 
 const Films = () => {

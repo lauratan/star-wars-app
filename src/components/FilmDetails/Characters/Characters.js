@@ -4,7 +4,7 @@ import useResolvePromises from '../../../hooks/useResolvePromises';
 import DisplayError from '../../../commons/DisplayError';
 
 const Characters = ({ characters: charactersUrls }) => {
-  const [characters] = useResolvePromises(charactersUrls);
+  const [characters] = useResolvePromises(charactersUrls, 'characters');
 
   const charactersData = characters.data.map(char => {
     const { name } = char;
