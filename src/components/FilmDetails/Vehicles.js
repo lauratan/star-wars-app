@@ -1,9 +1,9 @@
 import React from 'react';
 import DisplayResource from '../../commons/DisplayResource';
-import useAPI from '../../hooks/useAPI';
+import useResolvePromises from '../../hooks/useResolvePromises';
 
 const Vehicles = ({ vehicles: vehiclesUrl }) => {
-  const [vehicles] = useAPI(vehiclesUrl, 'vehicles');
+  const [vehicles] = useResolvePromises(vehiclesUrl, 'vehicles');
 
   return <DisplayResource resources={vehicles} resourceType='Vehicles' />;
 };

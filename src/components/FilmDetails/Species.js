@@ -1,9 +1,9 @@
 import React from 'react';
 import DisplayResource from '../../commons/DisplayResource';
-import useAPI from '../../hooks/useAPI';
+import useResolvePromises from '../../hooks/useResolvePromises';
 
 const Species = ({ species: speciesUrls }) => {
-  const [species] = useAPI(speciesUrls, 'species');
+  const [species] = useResolvePromises(speciesUrls, 'species');
 
   return <DisplayResource resources={species} resourceType='Species' />;
 };
