@@ -7,7 +7,9 @@
 * Display a placeholder / dummy data where the actual data will be placed so users can expect the data even before it is ready
 
 **2. Any improvements you would make to your application?**
-* Implementing a helper function or HOC for handling the API calls that are separated into different components in FilmDetails page
+* CSS / User interface design
+* Create details page for all subdata
+* Implement generic component that can display all subdata
+* Implement some kind of state management so character details can be accessible throughout certain components (e.g Content API) instead of passing props through `<Link>` in react-router
 
-TODO:
-- handle empty arr
+

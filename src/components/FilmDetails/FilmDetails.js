@@ -9,6 +9,7 @@ import DisplayError from '../../commons/DisplayError'
 
 const FilmDetails = props => {
   const filmTitle = props.match.params.title;
+  // Using a custom useFilmDetails() react hook here to keep api logic separated from display component
   const [film] = useFilmDetails(filmTitle);
 
   const {

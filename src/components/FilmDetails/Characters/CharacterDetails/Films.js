@@ -1,5 +1,5 @@
 import React from 'react';
-import useResolvePromises from '../../../hooks/useResolvePromises';
+import useResolvePromises from '../../../../hooks/useResolvePromises';
 
 const Films = ({ films: filmsUrls }) => {
   const [films] = useResolvePromises(filmsUrls, 'films');

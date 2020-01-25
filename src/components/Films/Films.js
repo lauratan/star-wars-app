@@ -4,6 +4,7 @@ import useFilms from '../../hooks/useFilms';
 import DisplayError from '../../commons/DisplayError';
 
 const Films = () => {
+  // Using a custom useFilms() react hook here to keep api logic separated from display component
   const [films] = useFilms();
   const [search, setSearch] = useState('');
 

@@ -15,6 +15,13 @@ const initialState = {
   species: []
 };
 
+/**
+ * Custom hook: useFilmDetails()
+ * I created this because:
+ * 1. It will keep FilmDetails component cleaner, and only handle the display of the separate components of film details
+ * 2. In case I need to get another film's details again somewhere else in the application so the the same logic can be used elsewhere
+ */
+
 const useFilmDetails = filmTitle => {
   const [details, setDetails] = useState({
     data: initialState,

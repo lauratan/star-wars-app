@@ -1,6 +1,6 @@
 import React from 'react';
-import useResolvePromises from '../../../hooks/useResolvePromises';
-import DisplayError from '../../../commons/DisplayError';
+import useResolvePromises from '../../../../hooks/useResolvePromises';
+import DisplayError from '../../../../commons/DisplayError';
 
 const Homeworld = ({ homeworld: url }) => {
   const [homeworld] = useResolvePromises(url);

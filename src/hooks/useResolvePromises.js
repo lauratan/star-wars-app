@@ -1,6 +1,16 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
+/**
+ * Custom hook: useResolvePromises(urls, resource)
+ * @param {(string|string[])} urls
+ * @param {string} resource
+ *
+ * I created this custom hook because all the subdata of a film or character gets return as another API url or and array of API url
+ * This custom hook allow me to easily retrieve and resolve all the data and can be reused everywhere in the application
+ *
+ */
+
 const useResolvePromises = (urls, resource) => {
   const [resources, setResources] = useState({
     loading: false,
