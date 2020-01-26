@@ -25,11 +25,13 @@ const FilmDetails = props => {
     species
   } = film.data;
 
+  const { error, loading } = film;
+
   return (
     <div>
       <h1>Film Details Page</h1>
       <h4>Film Metadata</h4>
-      {film.loading
+      {loading
         ?'Loading...'
         : <div>
             <p>Title: {title}</p>
@@ -40,7 +42,7 @@ const FilmDetails = props => {
           </div>
       }
 
-      <DisplayError error={film.error}/>
+      {error && <DisplayError error={error}/>}
 
       <Characters characters={characters} />
 

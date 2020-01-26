@@ -12,7 +12,9 @@ const Films = () => {
     setSearch(e.target.value);
   };
 
-  let filteredFilms = films.data.filter(film => {
+  const { data, error, loading } = films;
+
+  let filteredFilms = data.filter(film => {
     return film.title.toLowerCase().includes(search.toLowerCase());
   });
 
@@ -30,8 +32,8 @@ const Films = () => {
       <span>
         Search: <input value={search} onChange={e => handleSearch(e)} />
       </span>
-      {films.loading ? <p>Loading...</p> : <ul>{filmData}</ul>}
-      <DisplayError error={films.error} />
+      {loading ? <p>Loading...</p> : <ul>{filmData}</ul>}
+      {error && <DisplayError error={error} />}
     </div>
   );
 };

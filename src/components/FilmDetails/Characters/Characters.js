@@ -6,7 +6,9 @@ import DisplayError from '../../../commons/DisplayError';
 const Characters = ({ characters: charactersUrls }) => {
   const [characters] = useResolvePromises(charactersUrls, 'characters');
 
-  const charactersData = characters.data.map(char => {
+  const { error, loading, data } = characters;
+
+  const charactersData = data.map(char => {
     const { name } = char;
     // character's info are passed to the characterDetails component as props
     // which means the details are only accessible when user go to that character detail path through this link
@@ -22,8 +24,8 @@ const Characters = ({ characters: charactersUrls }) => {
   return (
     <div>
       <h4>Characters</h4>
-      {characters.loading ? 'Loading Characters...' : <ul>{charactersData}</ul>}
-      <DisplayError error={characters.error} />
+      {loading ? 'Loading Characters...' : <ul>{charactersData}</ul>}
+      {error && <DisplayError error={error} />}
     </div>
   );
 };
